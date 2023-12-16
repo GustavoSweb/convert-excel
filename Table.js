@@ -1,7 +1,8 @@
 class Table{
     constructor(arr){
         this.header = arr[0]
-        this.rows = arr.shift()
+        arr.shift()
+        this.rows = arr
     }
     get RowCount(){
         return this.rows.length
