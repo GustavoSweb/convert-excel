@@ -3,6 +3,8 @@ const Processor = require("./Processor.js")
 const Table = require("./Table.js")
 const HtmlParser = require("./HtmlParser.js")
 const Writer = require("./Writer.js")
+const ToPdf = require("./ToPdf.js")
+
 
 async function main(){
     try{
@@ -10,8 +12,9 @@ async function main(){
         var dadosProcessados = await Processor.Process(dados)
         var usersTable = new Table(dadosProcessados)
         var html = await HtmlParser.Paser(usersTable)
+         ToPdf.Convert(html)
 
-        Writer.Write("Tabela.html",html)
+        Writer.Write(Date.now()+".html",html)
     
     }catch(err){
         console.error(err)
